@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Virtual - Mujeres Ecosolidarias Arequipa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --accent-orange: #e65100;
+            --bg-light: #f1f8e9;
+            --text-dark: #263238;
+            --text-muted: #546e7a;
+            --white: #ffffff;
+            --whatsapp-color: #25d366;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.6; }
+        header { background: linear-gradient(rgba(27, 94, 32, 0.9), rgba(27, 94, 32, 0.95)); color: var(--white); text-align: center; padding: 50px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header-container { max-width: 800px; margin: 0 auto; }
+        header h1 { font-size: 2.3rem; margin-bottom: 10px; text-transform: uppercase; }
+        header .tagline { font-size: 1.2rem; font-style: italic; opacity: 0.9; margin-bottom: 20px; }
+        .proposal-box { background-color: rgba(255, 255, 255, 0.15); padding: 20px; border-radius: 10px; border-left: 5px solid var(--primary-light); text-align: left; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 15px; }
+        .section-title { text-align: center; color: var(--primary-dark); position: relative; margin: 40px 0 25px; font-size: 1.8rem; text-transform: uppercase; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background-color: var(--accent-orange); margin: 8px auto 0; }
+        
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .about-card { background: var(--white); padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border-top: 4px solid var(--primary-green); }
+        .about-card i { font-size: 2.2rem; color: var(--accent-orange); margin-bottom: 12px; }
+        .about-card h3 { color: var(--primary-dark); margin-bottom: 10px; }
+
+        .categories-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; position: sticky; top: 10px; z-index: 100; }
+        .category-btn { background-color: var(--white); color: var(--primary-dark); border: 2px solid var(--primary-green); padding: 8px 18px; border-radius: 25px; cursor: pointer; font-weight: 600; }
+        .category-btn.active, .category-btn:hover { background-color: var(--primary-green); color: var(--white); }
+
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
+        .product-card { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 6px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; border: 1px solid rgba(46, 125, 50, 0.1); transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-img-container { position: relative; width: 100%; height: 250px; background-color: #eaeaea; }
+        .product-img-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .product-badge { position: absolute; top: 15px; right: 15px; background-color: var(--accent-orange); color: var(--white); padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; z-index: 10; }
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-title { font-size: 1.2rem; color: var(--primary-dark); margin-bottom: 8px; }
+        .product-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 15px; flex-grow: 1; }
+        .product-meta { background: #f9fbe7; padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; margin-bottom: 15px; color: var(--primary-dark); border-left: 3px solid var(--primary-light); }
+        .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background-color: var(--whatsapp-color); color: var(--white); text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; }
+
+        .impact-banner { background-color: var(--primary-dark); color: var(--white); padding: 40px 20px; margin-top: 50px; border-radius: 15px; text-align: center; }
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 25px; }
+        .impact-item h4 { color: var(--primary-light); margin-bottom: 8px; }
+
+        footer { background-color: #112e14; color: var(--white); text-align: center; padding: 35px 20px; margin-top: 50px; }
+        .footer-socials { display: flex; justify-content: center; gap: 20px; margin: 15px 0; }
+        .social-icon { color: var(--white); font-size: 1.6rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1>Mujeres Ecosolidarias</h1>
+            <p class="tagline">Emprendimiento Social y Ambiental — Arequipa</p>
+            <div class="proposal-box">
+                <strong>Nuestra Propuesta de Valor:</strong><br>
+                “Personas comprometidas con el cuidado del medio ambiente que buscan productos decorativos y sostenibles con impacto real, encuentran en Mujeres Ecosolidarias artículos ecológicos artesanales elaborados con materiales reciclados y promovidos mediante una experiencia cercana y consciente...”
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fa-solid fa-users"></i>
+                <h3>¿Quiénes Somos?</h3>
+                <p>Somos un grupo cooperativo de mujeres arequipeñas emprendedoras. Nuestra iniciativa nace del compromiso de cuidar el planeta, reducir la contaminación mediante la transformación de residuos en objetos decorativos y útiles, y generar un sustento económico sostenible para nuestras familias.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Nuestra Misión</h3>
+                <p>Promover el reciclaje, el cuidado del medio ambiente y el emprendimiento de mujeres arequipeñas mediante la elaboración de productos ecológicos y sostenibles que generen oportunidades y protejan el planeta.</p>
+            </div>
+            <div class="about-card">
+                <i class="fa-solid fa-bullseye"></i>
+                <h3>Nuestra Visión</h3>
+                <p>Ser reconocidas como un emprendimiento líder en la elaboración de productos ecológicos a nivel nacional, fomentando una cultura ambiental sólida y el desarrollo económico y social de las mujeres emprendedoras.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Catálogo de Productos Ecoamigables</h2>
+        
+        <div class="categories-nav">
+            <button class="category-btn active" onclick="filterCategory('all')">Todos</button>
+            <button class="category-btn" onclick="filterCategory('maceteros')">Maceteros</button>
+            <button class="category-btn" onclick="filterCategory('portavasos')">Portavasos</button>
+            <button class="category-btn" onclick="filterCategory('mesas')">Mesas</button>
+            <button class="category-btn" onclick="filterCategory('bancas')">Bancas</button>
+            <button class="category-btn" onclick="filterCategory('obsequios')">Obsequios</button>
+        </div>
+
+        <div class="products-grid">
+            
+            <!-- 1. MACETEROS -->
+            <div class="product-card" data-category="maceteros">
+                <div class="product-img-container">
+                    <span class="product-badge">Termo-prensado</span>
+                    <!-- IMAGEN: Proceso de moldeado térmico de polímeros picados de alta resistencia -->
+                    <img src="https://i.postimg.cc/kghTTv56/imagen-2026-06-03-085813488.png" alt="Moldeado de Maceteros Ecológicos">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Maceteros Ecológicos</h3>
+                    <p class="product-desc">Maceteros artesanales de alta resistencia con sello oficial del proyecto, elaborados con plástico picado y termo-prensado recuperado en Arequipa.</p>
+                    <div class="product-meta"><i class="fa-solid fa-recycle"></i> Plástico picado de alta resistencia</div>
+                    <a href="https://wa.me/51959334455?text=Hola%20Mujeres%20Ecosolidarias,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20Maceteros%20Ecol%C3%B3gicos" target="_blank" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. PORTAVASOS -->
+            <div class="product-card" data-category="portavasos">
+                <div class="product-img-container">
+                    <span class="product-badge">Tapas Fusionadas</span>
+                    <!-- IMAGEN: Textura limpia con patrones fluidos de fusión plástica multicolor -->
+                    <img src="https://i.postimg.cc/LXvYVN9S/imagen-2026-06-03-090117441.png" alt="Portavasos Veteado Multicolor">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Portavasos Circulares</h3>
+                    <p class="product-desc">Elegantes portavasos circulares con hermosos veteados multicolor logrados mediante la fusión de tapas plásticas recicladas.</p>
+                    <div class="product-meta"><i class="fa-solid fa-circle-dot"></i> Patrones artísticos y únicos</div>
+                    <a href="https://wa.me/51959334455?text=Hola%20Mujeres%20Ecosolidarias,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20Portavasos%20Circulares" target="_blank" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. MESAS -->
+            <div class="product-card" data-category="mesas">
+                <div class="product-img-container">
+                    <span class="product-badge">Estilo Terrazo</span>
+                    <!-- IMAGEN: Panel rígido con textura de escamas plásticas recicladas estilo terrazo industrial -->
+                    <img src="https://i.postimg.cc/kgx5cfsk/imagen-2026-06-03-090316506.png" alt="Tablero de Mesa Terrazo Reciclado">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Mesas Ecoamigables</h3>
+                    <p class="product-desc">Estructuras firmes combinadas con tableros superiores gruesos de plástico reciclado estilo terrazo industrial reciclado.</p>
+                    <div class="product-meta"><i class="fa-solid fa-table"></i> Tableros macizos e impermeables</div>
+                    <a href="https://wa.me/51959334455?text=Hola%20Mujeres%20Ecosolidarias,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20Mesas%20Ecoamigables" target="_blank" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. BANCAS -->
+            <div class="product-card" data-category="bancas">
+                <div class="product-img-container">
+                    <span class="product-badge">Polímeros Compactos</span>
+                    <!-- IMAGEN: Bloques y listones limpios de polímero denso reciclado para diseño exterior -->
+                    <img src="https://i.postimg.cc/wjc6J3T7/imagen-2026-06-03-090405503.png" alt="Listones de Polímero para Bancas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Bancas Sostenibles</h3>
+                    <p class="product-desc">Bancas funcionales que incorporan listones superiores hechos de polímeros reciclados compactados. Ideales para exteriores y climas exigentes.</p>
+                    <div class="product-meta"><i class="fa-solid fa-cloud-sun"></i> Resistentes a la intemperie</div>
+                    <a href="https://wa.me/51959334455?text=Hola%20Mujeres%20Ecosolidarias,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20Bancas%20Sostenibles" target="_blank" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- 5. OBSEQUIOS -->
+            <div class="product-card" data-category="obsequios">
+                <div class="product-img-container">
+                    <span class="product-badge">Corporativo / Eco</span>
+                    <!-- IMAGEN: Mini suculentas preparadas en grupo para recuerdos ecológicos -->
+                    <img src="https://i.postimg.cc/C1tYYqJq/imagen-2026-06-03-090438586.png" alt="Suculentas para Recuerdos Ecológicos">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Obsequios (Plantitas)</h3>
+                    <p class="product-desc">Pequeñas suculentas sembradas en mini macetas coloridas de plástico reutilizado, listas para regalar en eventos corporativos o familiares.</p>
+                    <div class="product-meta"><i class="fa-solid fa-gift"></i> Listas para entrega en eventos</div>
+                    <a href="https://wa.me/51959334455?text=Hola%20Mujeres%20Ecosolidarias,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20Plantitas%20de%20Obsequio" target="_blank" class="whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="impact-banner">
+            <h2>¿Por qué es importante nuestro trabajo?</h2>
+            <p>Transformamos residuos en valor y desarrollo social para Arequipa</p>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h4>Importancia del Reciclaje</h4>
+                    <p>Permite reducir considerablemente la cantidad de residuos que terminan en el medio ambiente, disminuyendo la contaminación y promoviendo el aprovechamiento responsable.</p>
+                </div>
+                <div class="impact-item">
+                    <h4>Economía Circular</h4>
+                    <p>Nuestros productos forman parte de un modelo circular que busca reutilizar materiales para prolongar su vida útil y reducir activamente el impacto ambiental negativo regional.</p>
+                </div>
+                <div class="impact-item">
+                    <h4>Impacto Social Directo</h4>
+                    <p>El proyecto contribuye decididamente al fortalecimiento económico de las mujeres emprendedoras arequipeñas y promueve la participación activa comunitaria.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="font-weight: bold; font-size: 1.1rem;">MUJERES ECOSOLIDARIAS</p>
+        <p style="font-size: 0.85rem; opacity: 0.8;">Arequipa, Perú</p>
+        <div class="footer-socials">
+            <a href="https://web.facebook.com/mujeresecosolidariasarequipa/" target="_blank" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://wa.me/51959334455" target="_blank" class="social-icon" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <p style="font-size: 0.75rem; opacity: 0.4; margin-top: 15px;">&copy; 2026 Mujeres Ecosolidarias.</p>
+    </footer>
+
+    <script>
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.category-btn');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(category)) { btn.classList.add('active'); } 
+                else { btn.classList.remove('active'); }
+            });
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) { card.style.display = 'flex'; } 
+                else { card.style.display = 'none'; }
+            });
+        }
+    </script>
+</body>
+</html>
